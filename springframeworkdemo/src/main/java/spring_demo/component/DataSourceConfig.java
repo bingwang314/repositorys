@@ -1,10 +1,15 @@
 package spring_demo.component;
 
+import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 
 /**
  * @DESC
@@ -13,7 +18,29 @@ import javax.sql.DataSource;
  */
 @Configuration
 public class DataSourceConfig {
+    @Primary
+    @Bean("t1")
     public JdbcTemplate createT1Template(@Qualifier("t1DataSource")DataSource dataSource){
         return new DBTemplate(dataSource);
+    }
+
+    @Bean("t2")
+    public JdbcTemplate createT2Template(@Qualifier("t2DataSource") DataSource dataSource){
+        return new DBTemplate(dataSource);
+    }
+
+    @Primary
+    @Bean("t1DataSource")
+    @ConfigurationProperties("spring.datasource.t1")
+    public DataSource createT1DataSource(){
+        DataSource dataSource = DataSourceBuilder.create().type(HikariDataSource.class).build();
+        return dataSource;
+    }
+
+    @Bean("t2DataSource")
+    @ConfigurationProperties("spring.datasource.t2")
+    public DataSource createT2DataSource(){
+        DataSource dataSource = DataSourceBuilder.create().type(HikariDataSource.class).build();
+        return dataSource;
     }
 }
