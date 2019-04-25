@@ -4,8 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 import spring_demo.bean.Student;
-import spring_demo.component.DBTemplate;
+import spring_demo.support.DBTemplate;
 import spring_demo.sql.Sql;
 
 import java.util.ArrayList;
@@ -16,6 +17,8 @@ import java.util.List;
  * @AUTHOR wangbing
  * @DATE 2019-04-24
  */
+
+@Service
 public class Task {
     private Logger log = LoggerFactory.getLogger(getClass());
 

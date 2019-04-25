@@ -1,4 +1,4 @@
-package spring_demo.component;
+package spring_demo.support;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.dao.DataAccessException;
