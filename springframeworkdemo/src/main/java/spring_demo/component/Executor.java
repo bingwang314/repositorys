@@ -34,9 +34,11 @@ public class Executor {
 
     @Scheduled(cron = "*/10 * * * * *")
     public void execute() {
+        System.out.print("\033[31;4m");
+        log.info("Execute task:"+i +" started!"  + "\033[0m");
         Task task = context.getBean(Task.class);
         task.calc();
-        log.debug("Execute task: "+ (i ++));
+        System.out.print("\033[31;4m");
+        log.info("Execute task:"+(i++) +" successed!!"  + "\033[0m");
     }
-
 }

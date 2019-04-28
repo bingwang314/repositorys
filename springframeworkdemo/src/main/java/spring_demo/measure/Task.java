@@ -35,11 +35,11 @@ public class Task {
         Object[] args = {3, 90};
 
         List<Student> list = t1Db.queryForList(Sql.SELECT_SQL, Student.class, args);
-        log.debug("sql参数：{}", args);
+        log.info("sql参数：{}", args);
         if (list != null && list.size() > 0){
             List<Object[]> batchArgs = getInsertArgs(list);
             t2Db.batchUpdate(Sql.INSERT_SQL, batchArgs);
-            log.debug("sql参数：{}", batchArgs);
+            log.info("sql参数：{}", batchArgs);
         }
     }
 

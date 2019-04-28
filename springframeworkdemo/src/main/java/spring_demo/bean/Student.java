@@ -10,6 +10,8 @@ public class Student {
     private String name;
     private double score;
 
+    public Student() {}
+
     public Student(long id, String name, double score) {
         this.id = id;
         this.name = name;
